@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  # Flowee API
+  api:
+    image: ghcr.io/flowee-ru/api:main
+    env_file:
+      - api.env
