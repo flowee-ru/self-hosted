@@ -1,14 +1,52 @@
 version: '3.8'
 
 services:
+  # Flowee App
+  flowee:
+    image: ghcr.io/flowee-ru/app:main
+    restart: always
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    environment:
+      - NEXT_PUBLIC_APP_HOST: ${SCHEMA}://${APP_HOST}
+      - NEXT_PUBLIC_API_HOST: ${SCHEMA}://${API_HOST}
+      - NEXT_PUBLIC_MONDAY_HOST: ${SCHEMA}://${MONDAY_HOST}
+      - PORT: ${APP_PORT}
+
   # Flowee API
   api:
     image: ghcr.io/flowee-ru/api:main
-    env_file:
-      - api.env
+    restart: always
+    ports:
+      - ${API_PORT}:${API_PORT}
+    environment:
+      - PORT: ${API_PORT}
+      - APP_HOST: ${SCHEMA}://${APP_HOST}
+      - MONGO_URI: ${MONGO_URI}
+      - MONGO_DB: ${MONGO_DB}
+      - CAPTCHA_SECRET: ${CAPTCHA_SECRET}
+      - SMTP_HOST: ${SMTP_HOST}
+      - SMTP_PORT: ${SMTP_PORT}
+      - SMTP_USER: ${SMTP_USER}
+      - SMTP_PASSWORD: ${SMTP_PASSWORD}
   
   # Monday RTMP server
   monday:
     image: ghcr.io/flowee-ru/monday:main
-    env_file:
-      - monday.env
+    restart: always
+    ports:
+      - ${MONDAY_PORT}:${MONDAY_PORT}
+      - 1935:1935
+    environment:
+      - WEBSERVER_PORT: ${MONDAY_PORT}
+      - RTMP_PORT: 1935
+      - MONGO_URI: ${MONGO_URI}
+      - MONGO_DB: ${MONGO_DB}
+
+  # Nginx web server
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
