@@ -6,3 +6,9 @@ services:
     image: ghcr.io/flowee-ru/api:main
     env_file:
       - api.env
+  
+  # Monday RTMP server
+  monday:
+    image: ghcr.io/flowee-ru/monday:main
+    env_file:
+      - monday.env
