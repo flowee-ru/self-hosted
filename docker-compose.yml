@@ -60,9 +60,9 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     environment:
-      APP_HOST=${APP_HOST}
-      APP_PORT=${APP_PORT}
-      API_HOST=${API_HOST}
-      API_HOST=${API_HOST}
-      MONDAY_HOST=${MONDAY_HOST}
-      MONDAY_PORT=${MONDAY_PORT}
+      APP_HOST: ${APP_HOST}
+      APP_PORT: ${APP_PORT}
+      API_HOST: ${API_HOST}
+      API_HOST: ${API_HOST}
+      MONDAY_HOST: ${MONDAY_HOST}
+      MONDAY_PORT: ${MONDAY_PORT}
