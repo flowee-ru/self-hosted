@@ -43,6 +43,15 @@ services:
       - MONGO_URI: ${MONGO_URI}
       - MONGO_DB: ${MONGO_DB}
 
+  # MongoDB database
+  mongo:
+    image: mongo:6-jammy
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb/db:/data/db
+
   # Nginx web server
   nginx:
     image: nginx:latest
