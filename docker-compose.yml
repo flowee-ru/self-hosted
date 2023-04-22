@@ -47,7 +47,6 @@ services:
     restart: always
     env_file:
       - ./config/caddy.env
-      - ./config/app.env # hosts
     ports:
       - ${PORT}:80
     volumes:
