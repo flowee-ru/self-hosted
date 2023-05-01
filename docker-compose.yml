@@ -8,6 +8,8 @@ services:
     ports:
       - ${DC_APP_PORT}:8080
     env_file: .env
+    volumes:
+      - ./.env:/usr/src/app/.env
 
   # Flowee API
   api:
