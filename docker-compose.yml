@@ -1,36 +1,35 @@
 version: '3.8'
 
 services:
-  # Flowee App
+  # Web App (flovite)
   app:
-    image: ghcr.io/flowee-ru/app:main
+    image: ghcr.io/flowee-ru/flovite:main
     restart: always
     ports:
-      - ${APP_PORT}:3000
-    env_file: ./config/app.env
+      - ${DC_APP_PORT}:8080
+    env_file: .env
 
   # Flowee API
   api:
     image: ghcr.io/flowee-ru/api:main
     restart: always
     ports:
-      - ${API_PORT}:8000
-    env_file: ./config/api.env
+      - ${DC_API_PORT}:8081
+    env_file: .env
     environment:
-      MONGO_URI: mongodb://mongo:27017
-      MONGO_DB: flowee
+      API_PORT: 8081
   
   # Monday RTMP server
   monday:
     image: ghcr.io/flowee-ru/monday:main
     restart: always
     ports:
-      - ${MONDAY_PORT}:8089
-      - 1935:1935
-    env_file: ./config/monday.env
+      - ${DC_MONDAY_PORT}:8082
+      - ${DC_RTMP_PORT}:1935
+    env_file: .env
     environment:
-      MONGO_URI: mongodb://mongo:27017
-      MONGO_DB: flowee
+      MONDAY_PORT: 8082
+      MONDAY_RTMP_PORT: 1935
 
   # MongoDB database
   mongo:
@@ -45,11 +44,14 @@ services:
   caddy:
     image: caddy
     restart: always
-    env_file:
-      - ./config/caddy.env
     ports:
       - 80:80
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./data/caddy-data:/data
-      - ./data/caddy-config:/config
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
