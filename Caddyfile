@@ -1,11 +1,12 @@
-{$APP_HOST} {
+{$CADDY_HOST} {
+	route /api* {
+		uri strip_prefix /api
+		reverse_proxy http://api:8081
+	}
+
 	reverse_proxy http://app:8080
 }
 
-{$VITE_API_HOST} {
-	reverse_proxy http://api:8081
-}
-
-{$MONDAY_HOST} {
+{$CADDY_MONDAY_HOST} {
     reverse_proxy http://monday:8082
 }
