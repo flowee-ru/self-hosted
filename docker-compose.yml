@@ -50,8 +50,4 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
-
-volumes:
-  caddy_data:
-    external: true
-  caddy_config:
+    env_file: .env
