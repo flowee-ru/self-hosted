@@ -48,6 +48,6 @@ services:
       - 80:80
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+      - ./data/caddy-data:/data
+      - ./data/caddy-config:/config
     env_file: .env
