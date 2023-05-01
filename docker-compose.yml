@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Web App (flovite)
   app:
-    image: ghcr.io/flowee-ru/flovite:latest
+    image: ghcr.io/flowee-ru/flovite:main
     restart: always
     ports:
       - ${DC_APP_PORT}:8080
