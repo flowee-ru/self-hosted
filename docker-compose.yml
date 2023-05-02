@@ -13,7 +13,7 @@ services:
 
   # Flowee API
   api:
-    image: ghcr.io/flowee-ru/api:latest
+    image: ghcr.io/flowee-ru/api:main
     restart: always
     env_file: .env
     ports:
@@ -28,7 +28,7 @@ services:
   
   # Monday RTMP server
   monday:
-    image: ghcr.io/flowee-ru/monday:latest
+    image: ghcr.io/flowee-ru/monday:main
     restart: always
     env_file: .env
     ports:
