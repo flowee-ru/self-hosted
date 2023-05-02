@@ -1,4 +1,4 @@
-{$HOST} {
+{$CADDY_HOST} {
 	route /api* {
 		uri strip_prefix /api
 		reverse_proxy http://api:8081
