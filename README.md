@@ -38,3 +38,14 @@ List of the environment variables for configuration:
 # Run in detached mode
 $ docker compose up -d
 ```
+
+## Update
+Update Flowee to the newest version
+```bash
+# Download the latest images
+$ docker compose pull
+
+# Restart
+$ docker compose down
+$ docker compose up -d
+```
