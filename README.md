@@ -6,7 +6,7 @@
 </div>
 
 ## Configure
-```bash
+```
 # Clone files
 $ git clone https://github.com/flowee-ru/self-hosted
 $ cd self-hosted
@@ -34,14 +34,14 @@ List of the environment variables for configuration:
 | SMTP_PASSWORD         | SMTP user's password                                      | None                      |
 
 ## Run
-```bash
+```
 # Run in detached mode
 $ docker compose up -d
 ```
 
 ## Update
 Update Flowee to the newest version
-```bash
+```
 # Download the latest images
 $ docker compose pull
 
