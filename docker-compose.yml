@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Web App (flovite)
   app:
-    image: ghcr.io/flowee-ru/flovite:main
+    image: ghcr.io/flowee-ru/flovite:latest
     restart: always
     depends_on:
       - caddy
@@ -11,7 +11,7 @@ services:
 
   # Flowee API
   api:
-    image: ghcr.io/flowee-ru/api:main
+    image: ghcr.io/flowee-ru/api:latest
     restart: always
     env_file: .env
     depends_on:
@@ -24,7 +24,7 @@ services:
   
   # Monday RTMP server
   monday:
-    image: ghcr.io/flowee-ru/monday:main
+    image: ghcr.io/flowee-ru/monday:latest
     restart: always
     env_file: .env
     ports:
