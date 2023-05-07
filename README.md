@@ -11,7 +11,8 @@
 $ git clone https://github.com/flowee-ru/self-hosted
 $ cd self-hosted
 
-# Edit config
+# Copy and edit config
+$ cp .env.example .env
 $ nano .env
 ```
 
