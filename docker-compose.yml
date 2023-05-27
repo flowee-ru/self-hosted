@@ -22,19 +22,17 @@ services:
       MONGO_URI: mongodb://mongo:27017
       MONGO_DB: flowee
   
-  # Monday RTMP server
+  # mediamtx
   monday:
-    image: ghcr.io/flowee-ru/monday:latest
+    image: ghcr.io/flowee-ru/mediamtx:main
     restart: always
-    env_file: .env
     ports:
       - ${RTMP_PORT}:1935
+      - 8888:8888
     depends_on:
       - caddy
       - mongo
     environment:
-      MONDAY_PORT: 8082
-      MONDAY_RTMP_PORT: 1935
       MONGO_URI: mongodb://mongo:27017
       MONGO_DB: flowee
 

@@ -6,7 +6,7 @@
 
 	route /monday* {
 		uri strip_prefix /monday
-		reverse_proxy http://monday:8082
+		reverse_proxy http://monday:8888
 	}
 
 	reverse_proxy http://app:8080
